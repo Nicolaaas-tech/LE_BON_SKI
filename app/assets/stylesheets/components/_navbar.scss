@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-image: url("https://cdn.pixabay.com/photo/2015/02/17/19/42/panoramic-639860_960_720.jpg");
+  object-fit: cover;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +9,5 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 80px;
 }
