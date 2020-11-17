@@ -8,7 +8,7 @@
   <li> <p> Price: <%= @material.price %></p> </li>
 </ul>
 
-<%= link_to "Delete #{@material.category}",
+<%= link_to "Delete",
             material_path(@material),
             method: :delete,
             data: { confirm: "Are you sure?" } %>
