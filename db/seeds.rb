@@ -14,9 +14,9 @@ require 'faker'
   category = ["ski", "snowboard", "luge", "racket", "mono-ski"]
   size = ["small", "medium", "large"]
   review = ["Great", "Bad", "Very bad", "The best!"]
-  5.times do 
+  5.times do
     User.create!(email: Faker::Internet.email, password: "12343434")
-    Material.create!(category: category.sample, size: size.sample, description: "Very nice", localisation: Faker::Address.city ,user_id: User.first.id)
+    Material.create!(category: category.sample, size: size.sample, description: "Very nice", localisation: Faker::Address.city, price: rand(0...50), user_id: User.first.id)
     Booking.create!(start_date: "2020-12-12", end_date: "2020-12-16", user_id: User.first.id, material_id: Material.last.id)
     Review.create!(content: review.sample, rate: rand(0..5), booking_id: Booking.last.id)
   end

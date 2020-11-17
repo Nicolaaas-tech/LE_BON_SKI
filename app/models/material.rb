@@ -3,6 +3,7 @@ class Material < ApplicationRecord
   validates :size, presence: true, inclusion: { in: ["small", "medium", "large"] }
   validates :description, presence: true
   validates :localisation, presence: true
+  validates :price, presence: true
 
   belongs_to :user
   has_many :bookings, dependent: :destroy
