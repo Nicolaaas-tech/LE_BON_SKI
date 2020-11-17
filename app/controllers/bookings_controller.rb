@@ -14,16 +14,10 @@ class BookingsController < ApplicationController
     redirect_to material_path(@material)
   end
 
-  def edit
-
-  end
-
-  def update
-
-  end
-
-  def delete
-
+  def destroy
+    @booking = Review.find(booking_params)
+    @booking.destroy
+    redirect_to booking_path(@booking.material)
   end
 
   private

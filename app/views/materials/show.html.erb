@@ -22,4 +22,13 @@
 
 <%= link_to 'Lets add a booking', new_material_booking_path(@material), class: "btn btn-primary"%>
 
+    <li class="list-group-item">
+      <%= booking.start_date booking.end_date  %>
+      <%= link_to "Remove",
+                  booking_path(booking),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+    </li>
+
+
  <%#= link_to 'Lets go back to the home page', materials_path %>
