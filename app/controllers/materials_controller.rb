@@ -1,11 +1,12 @@
 class MaterialsController < ApplicationController
+  before_action only: [:index, :new, :edit]
 
   def index
     @materials = Material.all
   end
 
   def show
-    @material = Material.find(params[:id])
+    set_material
   end
 
   def new
@@ -22,18 +23,29 @@ class MaterialsController < ApplicationController
   end
 
   def edit
+    set_material
   end
 
   def update
+    set_material
+    @material.update(material_params)
+    redirect_to material_path(@material)
   end
 
   def destroy
+    @material = Material.find(params[:id])
+    @material.destroy
+
+    redirect_to materials_path
   end
 
   private
 
   def material_params
-    params.require(:material).permit(:category, :size, :description, :localisation)
+    params.require(:material).permit(:category, :price, :size, :description, :localisation)
+  end
 
+  def set_material
+    @material = Material.find(params[:id])
   end
 end

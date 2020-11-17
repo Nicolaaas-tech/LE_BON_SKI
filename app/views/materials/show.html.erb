@@ -7,3 +7,8 @@
   <li> <p><%= @material.description %></p> </li>
   <li> <p><%= @material.localisation %></p> </li>
 </ul>
+
+<%= link_to "Delete #{@material.category}",
+            material_path(@material),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
