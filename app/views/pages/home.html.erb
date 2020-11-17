@@ -20,11 +20,17 @@
   </div>
 </div>
 
-<%= form_tag materials_path, method: :get do %>
-   <label>Location:</label>
-   <%= text_field_tag :location %>
-   <label>Price:</label>
-   <%= text_field_tag :price %>
 
-   <%= submit_tag "Create User" %>
-<% end %>
+<div style= text-align:center class="container">
+  <div style= margin-top:10px>
+    <%= form_tag materials_path, method: :get do %>
+       <label>Location:</label>
+       <%= text_field_tag :location %>
+        <label>Category:</label>
+       <%= text_field_tag :Category %>
+       <label>Size:</label>
+       <%= text_field_tag :size %>
+       <%= submit_tag "Find my material", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
