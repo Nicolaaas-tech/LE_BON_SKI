@@ -1,8 +1,8 @@
 <%= simple_form_for(@material) do |f| %>
 
-  <%= f.input :category %>
+  <%= f.input :category, :collection => ['ski', 'snowboard', 'luge', 'racket', 'mono-ski'] %>
 
-  <%= f.input :size %>
+  <%= f.input :size, :collection => ['small', 'medium', 'large'] %>
 
   <%= f.input :price %>
 
@@ -13,3 +13,5 @@
   <%= f.submit "Submit", class: "btn btn-primary" %>
 
 <% end %>
+
+<%= link_to 'Lets go back to the home page', materials_path %>

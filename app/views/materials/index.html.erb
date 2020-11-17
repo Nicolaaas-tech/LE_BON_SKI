@@ -1,6 +1,13 @@
 
 <ul>
-<% @materials.each do |material |%>
-  <li> <%= material.category %> <%= material.size %> <%= material.price %> <%= material.description %> <%= material.localisation %> </li>
-<% end %>
+<% @materials.each do |material| %>
+
+
+  <li> <%= link_to material.category, material_path(material) %> </li>
+
+  <%= link_to 'Edit', edit_material_path(material.id) %>
+
+  <% end %>
 </ul>
+
+<%= link_to 'Lets create a new material', new_material_path() %>
