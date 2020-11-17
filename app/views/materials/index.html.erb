@@ -7,6 +7,10 @@
         <h2> Location :<%= material.localisation.capitalize %> </h2>
         <%= link_to "Details", material_path(material.id) %>
         <%= link_to 'Edit', edit_material_path(material.id) %>
+        <%= link_to "Delete",
+            material_path(material.id),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
       </div>
     </div>
   <% end %>
