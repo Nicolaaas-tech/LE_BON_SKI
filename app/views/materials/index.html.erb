@@ -1,13 +1,13 @@
+<div class="container">
+  <ul>
+  <% @materials.each do |material| %>
+    <li> 
+    <h1><%= material.category.capitalize %></h1>
+    <%= link_to "Details", material_path(material) %> </li>
+    <%= link_to 'Edit', edit_material_path(material.id) %>
+    <% end %>
+  </ul>
 
-<ul>
-<% @materials.each do |material| %>
+  <%= link_to 'Create new material', new_material_path() %>
 
-
-  <li> <%= link_to material.category, material_path(material) %> </li>
-
-  <%= link_to 'Edit', edit_material_path(material.id) %>
-
-  <% end %>
-</ul>
-
-<%= link_to 'Lets create a new material', new_material_path() %>
+</div>
