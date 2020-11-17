@@ -12,3 +12,14 @@
             material_path(@material),
             method: :delete,
             data: { confirm: "Are you sure?" } %>
+
+<ul class="list-group">
+  <% @material.bookings.each do |booking| %>
+    <li class="list-group-item"><%= booking.start_date %> <%= booking.end_date %></li>
+
+  <% end %>
+</ul>
+
+<%= link_to 'Lets add a booking', new_material_booking_path(@material), class: "btn btn-primary"%>
+
+ <%#= link_to 'Lets go back to the home page', materials_path %>

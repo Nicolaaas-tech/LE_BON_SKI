@@ -15,6 +15,7 @@ class MaterialsController < ApplicationController
 
   def create
     @material = Material.new(material_params)
+    @material.user = current_user
     if @material.save
       redirect_to material_path(@material)
     else
