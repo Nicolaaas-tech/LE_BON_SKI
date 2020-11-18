@@ -17,7 +17,7 @@ class MaterialsController < ApplicationController
     @material = Material.new(material_params)
     @material.user = current_user
     if @material.save
-      redirect_to material_path(@material)
+      redirect_to materials_path()
     else
       render :new
     end
