@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" style="margin-left:25%">
   <% @materials.each do |material| %>
     <div class="card-product">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <%= link_to image_tag("https://previews.123rf.com/images/2dmolier/2dmolier1610/2dmolier161000601/64655140-paire-de-skis-isol%C3%A9-sur-fond-blanc-illustration-3d.jpg"), material_path(material.id) %>
       <div class="card-product-infos">
-        <h1><%= material.category.capitalize %></h1>
+        <h1><%= link_to material.category.capitalize, material_path(material.id) %></h1>
         <h2> Location :<%= material.localisation.capitalize %> </h2>
         <%= link_to "Details", material_path(material.id) %>
         <%= link_to 'Edit', edit_material_path(material.id) %>
