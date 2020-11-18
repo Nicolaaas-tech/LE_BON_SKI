@@ -1,6 +1,6 @@
 class Material < ApplicationRecord
-  validates :category, presence: true, inclusion: { in: ["ski", "snowboard", "luge", "racket", "mono-ski"] }
-  validates :size, presence: true, inclusion: { in: ["small", "medium", "large"] }
+  validates :category, presence: true, inclusion: { in: ["Ski", "Snowboard", "Luge", "Racket", "Mono-ski"] }
+  validates :size, presence: true, inclusion: { in: ["Small", "Medium", "Large"] }
   validates :description, presence: true
   validates :localisation, presence: true
   validates :price, presence: true

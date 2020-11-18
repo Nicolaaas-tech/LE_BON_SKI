@@ -1,27 +1,37 @@
 <div class="container" style="margin-left:25%">
-  <h2><%= @material.category.capitalize %></h2>
-  <ul class="list-group" style="width:50%">
-    <li class="list-group-item"> <strong>Localisation :    </strong>  <%= @material.localisation %></li>
-    <li class="list-group-item"> <strong>Description :    </strong>  <%= @material.description %></li>
-    <li class="list-group-item"> <strong>Size :    </strong>  <%=  @material.size %></li>
-    <li class="list-group-item"> <strong>Price :    </strong>  <%= @material.price %></li>
-    <li class="list-group-item"> <strong>Contact :    </strong>  <%= @material.user.email %></li>
-    
-  </ul>
   
-  <ul class="list-group"style="width:50%">
-    <h2>My booking:</h2>
+  
+  <ul class="list-group"style="width:60%">
+    <h2>This item is booked at:</h2>
     <% @material.bookings.each do |booking| %>
-      <li class="list-group-item"><%= booking.start_date %> <%= booking.end_date %>
-      <%= link_to "Remove",booking_path(booking), method: :delete,data: { confirm: "Are you sure?" } %>
+      <li class="list-group-item" style = "display: flex; justify-content: space-between;">From: <%= booking.start_date %> To: <%= booking.end_date %>
+      <h5><%= (booking.end_date.to_date - booking.start_date.to_date).to_i %> Days</h5>
+      <%# <%= link_to "Remove",booking_path(booking), method: :delete,data: { confirm: "Are you sure?" } %> 
       </li>
+      
     <% end %>
   </ul>
   <br>
-  <%= link_to 'Book this material', new_material_booking_path(@material), class: "btn btn-success"%>
-  <%= link_to 'Back to available materials', materials_path(), class: "btn btn-primary" %>
-  <%= link_to "Delete",
+  
+  <div class="card-trip">
+    <img src="https://assets.pbimgs.com/pbimgs/ab/images/dp/wcm/202034/0730/found-wooden-skis-set-of-2-c.jpg" />
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= @material.category.capitalize %></h2>
+        <p><%= @material.description %></p>
+        <p><%=  @material.size %></p>
+        <p>Address: <%=  @material.localisation %></p>
+        <p>Contact: <%=  @material.user.email %></p>
+      </div>
+      <h2 class="card-trip-pricing"><%= link_to 'Book it', new_material_booking_path(@material), class: "btn btn-success"%></h2>
+    </div>
+  </div>
+
+   <%= link_to 'Back to available materials', materials_path(), class: "btn btn-primary", style: "margin-top: 25px;" %>
+   <%= link_to "Delete",
                 material_path(@material),
                 method: :delete,
                 data: { confirm: "Are you sure?" } %>
 </div>
+
+

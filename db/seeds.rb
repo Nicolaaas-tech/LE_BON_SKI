@@ -11,12 +11,14 @@ require 'faker'
   Booking.destroy_all
   Material.destroy_all
   User.destroy_all
-  category = ["ski", "snowboard", "luge", "racket", "mono-ski"]
-  size = ["small", "medium", "large"]
+  category = ["Ski", "Snowboard", "Luge", "Racket", "Mono-ski"]
+  size = ["Small", "Medium", "Large"]
   review = ["Great", "Bad", "Very bad", "The best!"]
-  5.times do
-    User.create!(email: Faker::Internet.email, password: "12343434")
-    Material.create!(category: category.sample, size: size.sample, description: "Very nice", localisation: Faker::Address.city, price: rand(0...50), user_id: User.first.id)
-    Booking.create!(start_date: "2020-12-12", end_date: "2020-12-16", user_id: User.first.id, material_id: Material.last.id)
+  description = ["Very good material", "It's decent", "Material is in great conditions"]
+
+  10.times do
+    User.create!(email: Faker::Internet.email, password: "123456")
+    Material.create!(category: category.sample, size: size.sample, description: description.sample, localisation: Faker::Address.city, price: rand(0...50), user_id: User.first.id)
+    Booking.create!(start_date: "2020-12-12", end_date: "2020-12-16", user_id: User.last.id, material_id: Material.last.id)
     Review.create!(content: review.sample, rate: rand(0..5), booking_id: Booking.last.id)
   end
