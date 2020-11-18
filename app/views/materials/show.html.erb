@@ -1,26 +1,26 @@
+<div class="container" style="margin-left:25%">
+  <h2><%= @material.category.capitalize %></h2>
 
-<h2><%= @material.category.capitalize %></h2>
-
-<ul>
-  <li> <p>Localisation:<%= @material.localisation %></p> </li>
-  <li> <p>Description: <%= @material.description %></p> </li>
-  <li> <p> Size:<%=  @material.size %></p> </li>
-  <li> <p> Price: <%= @material.price %></p> </li>
+<ul class="list-group" style="width:50%">
+  <li class="list-group-item"> <strong>Localisation :    </strong>  <%= @material.localisation %></li>
+  <li class="list-group-item"> <strong>Description :    </strong>  <%= @material.description %></li>
+  <li class="list-group-item"> <strong>Size :    </strong>  <%=  @material.size %></li>
+  <li class="list-group-item"> <strong>Price :    </strong>  <%= @material.price %></li>
 </ul>
 
-<%= link_to "Delete",
-            material_path(@material),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+  <ul class="list-group">
+    <% @material.bookings.each do |booking| %>
+      <li class="list-group-item"><%= booking.start_date %> <%= booking.end_date %>
+      <%= link_to "Remove",booking_path(booking), method: :delete,data: { confirm: "Are you sure?" } %>
+      </li>
+    <% end %>
+  </ul>
 
-<ul class="list-group">
-  <% @material.bookings.each do |booking| %>
-    <li class="list-group-item"><%= booking.start_date %> <%= booking.end_date %>
-    <%= link_to "Remove",booking_path(booking), method: :delete,data: { confirm: "Are you sure?" } %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to 'Add a booking', new_material_booking_path(@material), class: "btn btn-primary"%>
-<%= link_to 'Back to home page', materials_path(), class: "btn btn-primary" %>
+  <%= link_to 'Book this material', new_material_booking_path(@material), class: "btn btn-success"%>
+  <%= link_to 'Back to available materials', materials_path(), class: "btn btn-primary" %>
+  <%= link_to "Delete",
+                material_path(@material),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+</div>
 
