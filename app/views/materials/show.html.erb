@@ -1,13 +1,12 @@
 <div class="container" style="margin-left:25%">
   <h2><%= @material.category.capitalize %></h2>
-
-<ul class="list-group" style="width:50%">
-  <li class="list-group-item"> <strong>Localisation :    </strong>  <%= @material.localisation %></li>
-  <li class="list-group-item"> <strong>Description :    </strong>  <%= @material.description %></li>
-  <li class="list-group-item"> <strong>Size :    </strong>  <%=  @material.size %></li>
-  <li class="list-group-item"> <strong>Price :    </strong>  <%= @material.price %></li>
-</ul>
-
+  <ul class="list-group" style="width:50%">
+    <li class="list-group-item"> <strong>Localisation :    </strong>  <%= @material.localisation %></li>
+    <li class="list-group-item"> <strong>Description :    </strong>  <%= @material.description %></li>
+    <li class="list-group-item"> <strong>Size :    </strong>  <%=  @material.size %></li>
+    <li class="list-group-item"> <strong>Price :    </strong>  <%= @material.price %></li>
+  </ul>
+  
   <ul class="list-group">
     <% @material.bookings.each do |booking| %>
       <li class="list-group-item"><%= booking.start_date %> <%= booking.end_date %>
@@ -23,4 +22,3 @@
                 method: :delete,
                 data: { confirm: "Are you sure?" } %>
 </div>
-
