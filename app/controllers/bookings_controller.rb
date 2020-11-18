@@ -15,10 +15,11 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    @booking = Review.find(booking_params)
+    @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to material_path(@booking.material)
   end
+
   private
 
   def booking_params
