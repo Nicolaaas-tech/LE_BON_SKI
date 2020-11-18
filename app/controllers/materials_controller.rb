@@ -30,7 +30,7 @@ class MaterialsController < ApplicationController
   def update
     set_material
     @material.update(material_params)
-    redirect_to material_path(@material)
+    redirect_to materials_path
   end
 
   def destroy

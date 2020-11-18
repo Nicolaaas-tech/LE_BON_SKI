@@ -1,31 +1,26 @@
 
-<h2><%= @material.category %></h2>
+<h2><%= @material.category.capitalize %></h2>
 
 <ul>
-  <li> <p><%= @material.size %></p> </li>
-  <li> <p><%= @material.price %></p> </li>
-  <li> <p><%= @material.description %></p> </li>
-  <li> <p><%= @material.localisation %></p> </li>
+  <li> <p>Localisation:<%= @material.localisation %></p> </li>
+  <li> <p>Description: <%= @material.description %></p> </li>
+  <li> <p> Size:<%=  @material.size %></p> </li>
+  <li> <p> Price: <%= @material.price %></p> </li>
 </ul>
 
-<%= link_to "Delete #{@material.category}",
+<%= link_to "Delete",
             material_path(@material),
             method: :delete,
             data: { confirm: "Are you sure?" } %>
 
 <ul class="list-group">
   <% @material.bookings.each do |booking| %>
-    <li class="list-group-item"><%= booking.start_date %> <%= booking.end_date %></li>
-
+    <li class="list-group-item"><%= booking.start_date %> <%= booking.end_date %>
+    <%= link_to "Remove",booking_path(booking), method: :delete,data: { confirm: "Are you sure?" } %>
+    </li>
   <% end %>
 </ul>
 
-<%= link_to 'Lets add a booking', new_material_booking_path(@material), class: "btn btn-primary"%>
+<%= link_to 'Add a booking', new_material_booking_path(@material), class: "btn btn-primary"%>
+<%= link_to 'Back to home page', materials_path(), class: "btn btn-primary" %>
 
-    <li class="list-group-item">
-      <%= booking.start_date booking.end_date  %>
-      <%= link_to "Remove",
-                  booking_path(booking),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
-    </li>
