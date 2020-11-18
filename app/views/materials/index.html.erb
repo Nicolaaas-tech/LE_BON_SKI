@@ -1,44 +1,56 @@
 <div class="container" style="margin-left:25%">
-  <div id="owner">
-    <h1> My material </h1>
-      <% @materials.where(user: current_user).each do |material| %>
-        <div class="card-product">
-          <%= link_to image_tag("https://previews.123rf.com/images/2dmolier/2dmolier1610/2dmolier161000601/64655140-paire-de-skis-isol%C3%A9-sur-fond-blanc-illustration-3d.jpg"), material_path(material.id) %>
-          <div class="card-product-infos">
-            <h1><%= link_to material.category.capitalize, material_path(material.id) %></h1>
-            <h2> <%= material.description.capitalize %></h2>
-            <h2> Station :<%= material.localisation.capitalize %> </h2>
-            <%= link_to "Details", material_path(material.id) %>
-            <%= link_to 'Edit', edit_material_path(material.id) %>
-            <%= link_to "Delete",
-                material_path(material.id),
-                method: :delete,
-                data: { confirm: "Are you sure?" } %>
-            <h2 style= "text-align-last: end"><%=material.price %>$/day</h2>
-          </div>
-        </div>
-        <% end %>
-      <%= link_to 'Create new material', new_material_path(), class: "btn btn-primary"%>
-  </div>
 
-  <div id="user">
-    <h1> All skis available in Megeve</h1>
-    <% @materials.where.not(user: current_user).each do |material| %>
-      <div class="card-product">
-        <%= link_to image_tag("https://previews.123rf.com/images/2dmolier/2dmolier1610/2dmolier161000601/64655140-paire-de-skis-isol%C3%A9-sur-fond-blanc-illustration-3d.jpg"), material_path(material.id) %>
-        <div class="card-product-infos">
-          <h1><%= link_to material.category.capitalize, material_path(material.id) %></h1>
-          <h2> <%= material.description.capitalize %></h2>
-          <h2> Station :<%= material.localisation.capitalize %> </h2>
-          <%= link_to "Details", material_path(material.id) %>
-          <h2 style= "text-align-last: end"><%=material.price %>$/day</h2>
-          <%#= link_to 'Edit', edit_material_path(material.id) %>
-          <%#= link_to "Delete",
-              material_path(material.id),
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-        </div>
+ <div class="row">
+    <div class="col-sm">
+      <div id="owner">
+        <h1> My material </h1>
+          <% @materials.where(user: current_user).each do |material| %>
+            <div class="card-product"style="height: auto;">
+              <%= link_to image_tag("https://previews.123rf.com/images/2dmolier/2dmolier1610/2dmolier161000601/64655140-paire-de-skis-isol%C3%A9-sur-fond-blanc-illustration-3d.jpg"), material_path(material.id) %>
+              <div class="card-product-infos">
+                <h3><%= link_to material.category.capitalize, material_path(material.id) %></h3>
+                <h4> <%= material.description.capitalize %></h4>
+                <h4> Station :<%= material.localisation.capitalize %> </h4>
+                <%= link_to "Details", material_path(material.id) %>
+                <%= link_to 'Edit', edit_material_path(material.id) %>
+                <%= link_to "Delete",
+                    material_path(material.id),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+                <h2 style= "text-align-last: end"><%=material.price %>$/day</h2>
+              </div>
+            </div>
+          <% end %>
+          <%= link_to 'Rent out my stuff', new_material_path(), class: "btn btn-success margin"%>
       </div>
-    <% end %>
-    <%#= link_to 'Create new material', new_material_path(), class: "btn btn-primary"%>
+    </div>
+  
+    <div class="col-sm">
+       <div id="user">
+          <h1> All Items available</h1>
+            <%if @materials.count == 0 %>
+              <h4>No material matching your search</h4> 
+            <% else %>
+              <% @materials.where.not(user: current_user).each do |material| %>
+                <div class="card-product">
+                  <%= link_to image_tag("https://previews.123rf.com/images/2dmolier/2dmolier1610/2dmolier161000601/64655140-paire-de-skis-isol%C3%A9-sur-fond-blanc-illustration-3d.jpg"), material_path(material.id) %>
+                  <div class="card-product-infos">
+                    <h3><%= link_to material.category.capitalize, material_path(material.id) %></h3>
+                    <h4> <%= material.description.capitalize %></h4>
+                    <h4> Station :<%= material.localisation.capitalize %> </h4>
+                    <%= link_to "Details", material_path(material.id) %>
+                    <h2 style= "text-align-last: end"><%=material.price %>$/day</h2>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <%= link_to 'Need more stuff ?', root_path(), class: "btn btn-success margin"%>
+        </div>
+    </div>
+      
+
   </div>
+    
+
+   
+</div>
