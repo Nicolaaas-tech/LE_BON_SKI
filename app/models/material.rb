@@ -4,6 +4,7 @@ class Material < ApplicationRecord
   validates :description, presence: true
   validates :localisation, presence: true
   validates :price, presence: true
+  has_one_attached :photo
 
   belongs_to :user
   has_many :bookings, dependent: :destroy
