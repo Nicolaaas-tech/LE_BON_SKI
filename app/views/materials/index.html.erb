@@ -1,39 +1,42 @@
 <div class="container">
   <div id="owner">
-  <% @materials.where(user: current_user).each do |material| %>
-    <div class="card-product">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-product-infos">
-        <h1><%= material.category.capitalize %></h1>
-        <h2> Location :<%= material.localisation.capitalize %> </h2>
-        <%= link_to "Details", material_path(material.id) %>
-        <%= link_to 'Edit', edit_material_path(material.id) %>
-        <%= link_to "Delete",
-            material_path(material.id),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-      </div>
-    </div>
-    <% end %>
-    <%= link_to 'Create new material', new_material_path(), class: "btn btn-primary"%>
+    <h1> My material </h1>
+      <% @materials.where(user: current_user).each do |material| %>
+        <div class="card-product">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-product-infos">
+            <h2><%= material.category.capitalize %></h2>
+            <h3> Location :<%= material.localisation.capitalize %> </h3>
+            <%= link_to "Details", material_path(material.id) %>
+            <%= link_to 'Edit', edit_material_path(material.id) %>
+            <%= link_to "Delete",
+                material_path(material.id),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+          </div>
+        </div>
+        <% end %>
+        <%= link_to 'Create new material', new_material_path(), class: "btn btn-primary"%>
+
   </div>
 
   <div id="user">
+    <h1> All materials available </h1>
     <% @materials.where.not(user: current_user).each do |material| %>
       <div class="card-product">
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
         <div class="card-product-infos">
-          <h1><%= material.category.capitalize %></h1>
-          <h2> Location :<%= material.localisation.capitalize %> </h2>
+          <h2><%= material.category.capitalize %></h2>
+          <h3> Location :<%= material.localisation.capitalize %> </h3>
           <%= link_to "Details", material_path(material.id) %>
-          <%= link_to 'Edit', edit_material_path(material.id) %>
-          <%= link_to "Delete",
+          <%#= link_to 'Edit', edit_material_path(material.id) %>
+          <%#= link_to "Delete",
               material_path(material.id),
               method: :delete,
               data: { confirm: "Are you sure?" } %>
         </div>
       </div>
     <% end %>
-    <%= link_to 'Create new material', new_material_path(), class: "btn btn-primary"%>
+    <%#= link_to 'Create new material', new_material_path(), class: "btn btn-primary"%>
   </div>
 </div>
