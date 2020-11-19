@@ -35,10 +35,12 @@
               <p>Address: <%=  @material.localisation %></p>
               <p>Contact: <%=  @material.user.email %></p>
             </div>
-            <h2 class="card-trip-pricing"><%= link_to 'Book it', new_material_booking_path(@material), class: "btn btn-success"%></h2>
+            <h2 class="card-trip-pricing"><%= link_to 'Book it', new_material_booking_path(@material), class: "btn btn-success btnbook"%></h2>
           </div>
         </div>
-
+      <div class="showbooking d-none">
+        <%= render 'bookings/new', booking: @booking%>
+      </div>
         <%= link_to 'Back to available materials', materials_path(), class: "btn btn-primary", style: "margin-top: 25px;" %>
         <%= link_to "Delete",
                       material_path(@material),

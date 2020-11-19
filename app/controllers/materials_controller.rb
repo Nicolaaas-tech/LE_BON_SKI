@@ -19,6 +19,7 @@ class MaterialsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     set_material
     @reviews = []
     Review.all.each do |review|
