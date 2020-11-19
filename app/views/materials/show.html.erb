@@ -22,7 +22,7 @@
 
           <%# <%= cl_image_tag @material.photo.key, height: 300, width: 400, crop: :fill %>
           <% if @material.photo.attached? %>
-            <%= cl_image_tag @material.photo.key, height: 300, width: 400, crop: :fill %> 
+            <%= cl_image_tag @material.photo.key, height: 300, width: 400, crop: :fill %>
           <% else %>
             <%= image_tag 'https://image.shutterstock.com/z/stock-vector-no-photography-no-camera-and-mobile-phone-sign-prohibition-symbol-sticker-for-area-places-1138222241.jpg' %>
           <% end %>
@@ -46,19 +46,9 @@
                       data: { confirm: "Are you sure?" } %>
 
     </div>
-    <div class="right-container">
-      <% @reviews.each do |review| %>
-        <%= review.rate %> <%= review.content %>
-      <% end %>
-    </div>
-
-
-
+        <div class="right-container">
+          <% @reviews.each do |review| %>
+            <%= review.rate %> <%= review.content %>
+          <% end %>
+        </div>
 </div>
-
-
-
-
-
-
-
