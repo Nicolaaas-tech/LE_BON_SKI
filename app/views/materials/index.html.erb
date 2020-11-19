@@ -1,7 +1,7 @@
 <div class="container">
 
  <div class="row">
-    <div class="col-sm">
+    <div class="col-sm center">
       <div id="owner">
         <h1> My material </h1>
           <% @materials.where(user: current_user).each do |material| %>
@@ -25,14 +25,14 @@
       </div>
     </div>
   
-    <div class="col-sm">
+    <div class="col-sm center">
        <div id="user">
           <h1> All Items available</h1>
             <%if @materials.count == 0 %>
               <h4>No material matching your search</h4> 
             <% else %>
               <% @materials.where.not(user: current_user).each do |material| %>
-                <div class="card-product">
+                <div class="card-product"style="height: auto;">
                   <%= link_to image_tag("https://previews.123rf.com/images/2dmolier/2dmolier1610/2dmolier161000601/64655140-paire-de-skis-isol%C3%A9-sur-fond-blanc-illustration-3d.jpg"), material_path(material.id) %>
                   <div class="card-product-infos">
                     <h3><%= link_to material.category.capitalize, material_path(material.id) %></h3>
