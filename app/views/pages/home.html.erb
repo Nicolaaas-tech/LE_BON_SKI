@@ -1,11 +1,26 @@
 
-<div class="card-category-banner" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1480497490787-505ec076689f?ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80)">
-  Rent the perfect material for your holiday
+<div>
+  <div class="card-category-banner" style= "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1480497490787-505ec076689f?ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80)">
+    <div class="container">
+    <h1>Rent the perfect material for your holiday</h1>
+    <div style= text-align:center class="form">
+          <%= form_tag materials_path, method: :get do %>
+          <label>Location:</label>
+          <%= text_field_tag :location %>
+          <label>Category:</label>
+           <%= text_field_tag :Category %>
+           <label>Size:</label>
+           <%= text_field_tag :size %>
+           <%= submit_tag "Find my material", class: 'btn btn-primary' %>
+        <% end %>
+    </div>
+    </div>
+  </div>
 </div>
 
 <div class="container">
   <div class="cards">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
       Find the best setup
     </div>
 
@@ -20,16 +35,3 @@
 </div>
 
 
-<div style= text-align:center class="container">
-  <div style= margin-top:10px>
-    <%= form_tag materials_path, method: :get do %>
-       <label>Location:</label>
-       <%= text_field_tag :location %>
-        <label>Category:</label>
-       <%= text_field_tag :Category %>
-       <label>Size:</label>
-       <%= text_field_tag :size %>
-       <%= submit_tag "Find my material", class: 'btn btn-primary' %>
-    <% end %>
-  </div>
-</div>
