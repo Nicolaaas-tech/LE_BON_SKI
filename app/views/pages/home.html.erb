@@ -6,8 +6,8 @@
     <div class="form" id="search-form">
           <%= form_tag materials_path, method: :get do %>
           <%= text_field_tag :localisation, nil, placeholder: "Where?", class: "search-input"%>
-          <%= select :category, :id, ["Ski", "Snowboard", "Luge", "Racket", "Mono-ski"], class: "input-drop"%>
-          <%= select :size, :id, ["Small", "Medium", "Large"], class: "input-drop"%>
+          <%= select_tag :category, options_for_select(["Ski", "Snowboard", "Luge", "Racket", "Mono-ski"]), class: "input-drop"%>
+          <%= select_tag :size, options_for_select(["Small", "Medium", "Large"]), class: "input-drop"%>
           <%= submit_tag "Find my material", class: "button-search btn btn-success"%>
         <% end %>
     </div>
