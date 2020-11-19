@@ -7,6 +7,11 @@ class MaterialsController < ApplicationController
 
   def show
     set_material
+    @reviews = []
+    Review.all.each do |review|
+      @reviews << review if review.booking.material == @material
+    end
+
   end
 
   def new
