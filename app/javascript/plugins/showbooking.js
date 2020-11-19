@@ -1,6 +1,9 @@
 const showbooking = () => {
   const button = document.querySelector(".btnbook");
-  console.log(button);
+  button.addEventListener('click', (event) => {
+    document.querySelector("#calendar").classList.remove("d-none")
+  });
 };
 
 export {showbooking};
+
