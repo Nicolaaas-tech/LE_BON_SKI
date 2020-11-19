@@ -1,6 +1,28 @@
 <div class="container my-container">
+ <div class="row">
+    <div class="col-sm center">
+        <div class="card-trip" style="margin-top: 10px">
+          <% if @material.photo.attached? %>
+            <%= cl_image_tag @material.photo.key, height: 300, width: 400, crop: :fill %>
+          <% else %>
+            <%= image_tag ('LeBonSki_logo.png') %>
+          <% end %>
 
-        <ul class="list-group"style="width:45%">
+          <div class="card-trip-infos" >
+            <div>
+              <h2><%= @material.category.capitalize %></h2>
+              <p><%= @material.description %></p>
+              <p><%=  @material.size %></p>
+              <p>Address: <%=  @material.localisation %></p>
+              <p>Contact: <%=  @material.user.email %></p>
+            </div>
+            <h2 class="card-trip-pricing"><span class= "btn btn-success btnbook"> Book it </span> </h2>
+          </div>
+        </div>   
+    </div>
+
+    <div class="col-sm center">
+      <ul class="list-group"style="width:100%">
           <% if @material.bookings.count > 0 %>
             <h2>This item is already booked for:</h2>
             <% @material.bookings.each do |booking| %>
@@ -10,34 +32,32 @@
               </li>
             <% end %>
           <% end %>
-        </ul>
 
-
-        <div class="card-trip" style="margin-top: 10px">
-          <%# <%= cl_image_tag @material.photo.key, height: 300, width: 400, crop: :fill %>
-          <% if @material.photo.attached? %>
-            <%= cl_image_tag @material.photo.key, height: 300, width: 400, crop: :fill %> 
-          <% else %>
-            <p>no photo</p>
+        <div id= "calendar" class="form-wrapper d-none" style="width: 400px; margin: 0 auto;">
+          <%= simple_form_for [ @material, @booking ] do |f| %>
+            <%= f.input :start_date, as: :string,
+              required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :end_date, as: :string,
+              required: false, input_html: {class: "datepicker"} %>
+            <%= f.submit "Submit your booking", class: "btn btn-primary" %>
           <% end %>
-          <div class="card-trip-infos" >
-            <div>
-              <h2><%= @material.category.capitalize %></h2>
-              <p><%= @material.description %></p>
-              <p><%=  @material.size %></p>
-              <p>Address: <%=  @material.localisation %></p>
-              <p>Contact: <%=  @material.user.email %></p>
-            </div>
-            <h2 class="card-trip-pricing"><%= link_to 'Book it', new_material_booking_path(@material), class: "btn btn-success"%></h2>
-          </div>
         </div>
+      </ul>
+    </div>
+  </div>
 
+
+      
         <%= link_to 'Back to available materials', materials_path(), class: "btn btn-primary", style: "margin-top: 25px;" %>
         <%= link_to "Delete",
                       material_path(@material),
                       method: :delete,
                       data: { confirm: "Are you sure?" } %>
 
+    </div>
+        <div class="right-container">
+          <% @reviews.each do |review| %>
+            <%= review.rate %> <%= review.content %>
+          <% end %>
+        </div>
 </div>
-
-

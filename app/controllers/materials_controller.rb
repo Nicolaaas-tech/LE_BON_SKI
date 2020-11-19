@@ -2,11 +2,29 @@ class MaterialsController < ApplicationController
   before_action only: [:index, :new, :edit]
 
   def index
-    @materials = Material.all
+    query = {}
+    query["localisation"] = params[:localisation] if params[:localisation]
+    query["category"] = params[:category] if params[:category]
+    query["size"] = params[:size] if params[:size]
+    if query.empty?
+      @materials = Material.all
+    else
+      sqlquery = ""
+      query.each do |key, value|
+        sqlquery += " AND " if !sqlquery.empty?
+        sqlquery += "#{key} ILIKE :#{key}"
+      end
+      @materials = Material.where(sqlquery, localisation: "%#{params[:localisation]}%" , category: "%#{params[:category]}%", size: "%#{params[:size]}%")
+    end
   end
 
   def show
+    @booking = Booking.new
     set_material
+    @reviews = []
+    Review.all.each do |review|
+      @reviews << review if review.booking.material == @material
+    end
   end
 
   def new
