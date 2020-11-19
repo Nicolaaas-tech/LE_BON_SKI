@@ -5,10 +5,10 @@
     <h1>Rent the perfect material for your holiday.</h1>
     <div class="form">
           <%= form_tag materials_path, method: :get do %>
-          <%= text_field_tag :localisation, nil, placeholder: "Where to" %>
-          <%= text_field_tag :category, nil, placeholder: "Ski ? Snowboard ?" %>
-          <%= text_field_tag :size, nil, placeholder: "Size : S? M? L?" %>
-          <%= submit_tag "Find my material", class: 'btn btn-primary validation' %>
+          <%= text_field_tag :location, nil, placeholder: "Where?", class: "search-input"%>
+          <%= text_field_tag :Category, nil, placeholder: "Ski? Snowboard?" , class: "search-input"%>
+          <%= text_field_tag :size, nil, placeholder: "Size ? S? M? L?" , class: "search-input"%>
+          <%= submit_tag "Find my material", class: "button-search btn btn-success"%>
         <% end %>
     </div>
     </div>
