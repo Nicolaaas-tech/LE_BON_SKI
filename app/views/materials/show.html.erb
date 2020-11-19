@@ -14,7 +14,11 @@
     
         
         <div class="card-trip" style="margin-top: 10px">
-          <%# <%= cl_image_tag @material.photo.key, height: 300, width: 400, crop: :fill %> 
+          <% if @material.photo.attached? %>
+            <%= cl_image_tag @material.photo.key, height: 300, width: 400, crop: :fill %> 
+          <% else %>
+            <p>no photo</p>
+          <% end %>
           <div class="card-trip-infos" >
             <div>
               <h2><%= @material.category.capitalize %></h2>
