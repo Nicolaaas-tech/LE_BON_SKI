@@ -5,7 +5,11 @@
         <h1> My material </h1>
           <% @materials.where(user: current_user).each do |material| %>
             <div class="card-product"style="height: auto;">
-              <%= link_to image_tag("https://previews.123rf.com/images/2dmolier/2dmolier1610/2dmolier161000601/64655140-paire-de-skis-isol%C3%A9-sur-fond-blanc-illustration-3d.jpg"), material_path(material.id) %>
+            <% if material.photo.attached? %>
+              <%= cl_image_tag material.photo.key, height: 300, width: 400, crop: :fill %>
+            <% else %>
+              <%= image_tag 'https://image.shutterstock.com/z/stock-vector-no-photography-no-camera-and-mobile-phone-sign-prohibition-symbol-sticker-for-area-places-1138222241.jpg' %>
+            <% end %>
               <div class="card-product-infos">
                 <h3><%= link_to material.category.capitalize, material_path(material.id) %></h3>
                 <h4> <%= material.description.capitalize %></h4>
@@ -32,7 +36,11 @@
             <% else %>
               <% @materials.where.not(user: current_user).each do |material| %>
                 <div class="card-product"style="height: auto;">
-                  <%= link_to image_tag("https://previews.123rf.com/images/2dmolier/2dmolier1610/2dmolier161000601/64655140-paire-de-skis-isol%C3%A9-sur-fond-blanc-illustration-3d.jpg"), material_path(material.id) %>
+                  <% if material.photo.attached? %>
+                    <%= cl_image_tag material.photo.key, height: 300, width: 400, crop: :fill %> 
+                  <% else %>
+                    <%= image_tag 'https://image.shutterstock.com/z/stock-vector-no-photography-no-camera-and-mobile-phone-sign-prohibition-symbol-sticker-for-area-places-1138222241.jpg' %>
+                  <% end %>
                   <div class="card-product-infos">
                     <h3><%= link_to material.category.capitalize, material_path(material.id) %></h3>
                     <h4> <%= material.description.capitalize %></h4>
