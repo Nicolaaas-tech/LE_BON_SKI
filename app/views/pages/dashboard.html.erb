@@ -1,18 +1,49 @@
 <%#= @bookings %>
+<div class="big-container">
 
-<div class="container1">
-  <div class="right-container">
-    <% current_user.bookings.each do |booking| %>
-      <h2><%= booking.start_date %>, <%= booking.end_date %></h2>
-        <div>
-          <h2><%= booking.material.category.capitalize %></h2>
-            <p><%= booking.material.description %></p>
-            <p><%=  booking.material.size %></p>
-            <p>Address: <%=  booking.material.localisation %></p>
-            <p>Contact: <%= booking.material.user.email %></p>
-        </div>
-      <% end %>
+<div class="container my-container">
+  <div class="row">
+    <div class="col-sm center">
+      <div id="owner">
+        <h1> Upcoming bookings </h1>
+          <% current_user.bookings.upcoming.each do |booking| %>
+            <div class="card-product"style="height: auto;">
+              <div class="card-product-infos">
+                <h3><%= booking.material.category.capitalize %></h3>
+                <h4> <%= booking.material.description.capitalize %></h4>
+                <h4> Station :<%= booking.material.localisation.capitalize %> </h4>
+                <%= link_to "Cancel",  %>
+                <%= link_to "Details", material_path(material.id) %>
+                <h2 style= "text-align-last: end"><%=booking.material.price %>$/day</h2>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- rediriger vers la show -->
+<!--  -->
 
+<div class="container my-container">
+  <div class="row">
+    <div class="col-sm center">
+      <div id="owner">
+        <h1> Past bookings </h1>
+          <% current_user.bookings.past.each do |booking| %>
+            <div class="card-product"style="height: auto;">
+              <div class="card-product-infos">
+                <h3><%= booking.material.category.capitalize %></h3>
+                <h4> <%= booking.material.description.capitalize %></h4>
+                <h4> Station :<%= booking.material.localisation.capitalize %> </h4>
+                <h2 style= "text-align-last: end"><%=booking.material.price %>$/day</h2>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
