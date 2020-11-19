@@ -5,9 +5,9 @@
     <h1>Rent the perfect material for your holiday</h1>
     <div class="form">
           <%= form_tag materials_path, method: :get do %>
-          <%= text_field_tag :location, nil, placeholder: "Where do" %>
-          <%= text_field_tag :Category, nil, placeholder: "Ski ? Snowboard ?" %>
-          <%= text_field_tag :size, nil, placeholder: "Size : S? M? L? Snowboard ?" %>
+          <%= text_field_tag :localisation, nil, placeholder: "Where to" %>
+          <%= text_field_tag :category, nil, placeholder: "Ski ? Snowboard ?" %>
+          <%= text_field_tag :size, nil, placeholder: "Size : S? M? L?" %>
           <%= submit_tag "Find my material", class: 'btn btn-primary validation' %>
         <% end %>
     </div>
