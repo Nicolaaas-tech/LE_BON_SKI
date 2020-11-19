@@ -1,3 +1,18 @@
-<%= @bookings %>
+<%#= @bookings %>
 
-<%= @bookingsonmymaterial %>
+<div class="container1">
+  <div class="right-container">
+    <% current_user.bookings.each do |booking| %>
+      <h2><%= booking.start_date %>, <%= booking.end_date %></h2>
+        <div>
+          <h2><%= booking.material.category.capitalize %></h2>
+            <p><%= booking.material.description %></p>
+            <p><%=  booking.material.size %></p>
+            <p>Address: <%=  booking.material.localisation %></p>
+            <p>Contact: <%= booking.material.user.email %></p>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+
