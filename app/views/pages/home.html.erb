@@ -3,11 +3,11 @@
   <div class="card-category-banner" style= "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1480497490787-505ec076689f?ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80)">
     <div class="container">
     <h1>Rent the perfect material for your holiday.</h1>
-    <div class="form">
+    <div class="form" id="search-form">
           <%= form_tag materials_path, method: :get do %>
-          <%= text_field_tag :location, nil, placeholder: "Where?", class: "search-input"%>
-          <%= text_field_tag :Category, nil, placeholder: "Ski? Snowboard?" , class: "search-input"%>
-          <%= text_field_tag :size, nil, placeholder: "Size ? S? M? L?" , class: "search-input"%>
+          <%= text_field_tag :localisation, nil, placeholder: "Where?", class: "search-input"%>
+          <%= select :category, :id, ["Ski", "Snowboard", "Luge", "Racket", "Mono-ski"], class: "input-drop"%>
+          <%= select :size, :id, ["Small", "Medium", "Large"], class: "input-drop"%>
           <%= submit_tag "Find my material", class: "button-search btn btn-success"%>
         <% end %>
     </div>

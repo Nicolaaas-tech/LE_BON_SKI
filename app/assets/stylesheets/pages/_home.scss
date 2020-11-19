@@ -32,9 +32,11 @@ min-height: calc(100vh - 180px);
   margin-top: 53px;
 }
 
-.search-input {
+
+
+.search-input, select#category_id, select#size_id {
   height: 37px;
-  margin: 0px 32px;
+  margin: 0px 20px;
   font-size: 15px;
   border: none;
   border-radius: 3px;
@@ -44,23 +46,10 @@ min-height: calc(100vh - 180px);
   }
 }
 
-.button-search{
+.button-search {
   height: 37px;
   font-style: bold;
 }
-
-
-// .form{
-//   input{
-//     height: 33px;
-//     border-radius: 26px;
-//     border-color: navajowhite;
-//     text-shadow: 0 0 0 whitesmoke;
-//     margin-right: 28px;
-//     padding: 20px
-
-//   }
-// }
 
 // .validation {
 //   color: black ;
