@@ -3,14 +3,11 @@
   <div class="card-category-banner" style= "background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1480497490787-505ec076689f?ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80)">
     <div class="container">
     <h1>Rent the perfect material for your holiday</h1>
-    <div style= text-align:center class="form">
+    <div class="form">
           <%= form_tag materials_path, method: :get do %>
-          <label>Location:</label>
-          <%= text_field_tag :location %>
-          <label>Category:</label>
-           <%= text_field_tag :Category %>
-           <label>Size:</label>
-           <%= text_field_tag :size %>
+          <%= text_field_tag :location, nil, placeholder: "Where do" %>
+           <%= text_field_tag :Category, nil, placeholder: "Ski ? Snowboard ?" %>
+           <%= text_field_tag :size, nil, placeholder: "Size : S? M? L? Snowboard ?" %>
            <%= submit_tag "Find my material", class: 'btn btn-primary' %>
         <% end %>
     </div>
@@ -25,7 +22,7 @@
     </div>
 
     <div class="card-category offset" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1535813449-9b1b28174821?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80)">
-      Get advises from local hosts
+      Get advises from locals
     </div>
 
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1470010762743-1fa2363f65ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)">

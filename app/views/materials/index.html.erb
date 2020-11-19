@@ -1,5 +1,4 @@
-<div class="container">
-
+<div class="container my-container">
  <div class="row">
     <div class="col-sm center">
       <div id="owner">
@@ -24,12 +23,12 @@
           <%= link_to 'Rent out my stuff', new_material_path(), class: "btn btn-success margin"%>
       </div>
     </div>
-  
+
     <div class="col-sm center">
        <div id="user">
           <h1> All Items available</h1>
             <%if @materials.count == 0 %>
-              <h4>No material matching your search</h4> 
+              <h4>No material matching your search</h4>
             <% else %>
               <% @materials.where.not(user: current_user).each do |material| %>
                 <div class="card-product"style="height: auto;">
@@ -47,10 +46,10 @@
             <%= link_to 'Need more stuff ?', root_path(), class: "btn btn-success margin"%>
         </div>
     </div>
-      
+
 
   </div>
-    
 
-   
+
+
 </div>
