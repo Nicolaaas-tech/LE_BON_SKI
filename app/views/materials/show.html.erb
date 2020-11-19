@@ -1,4 +1,7 @@
-<div class="container my-container">
+
+
+<div class="container my-container left-container">
+
 
         <ul class="list-group"style="width:45%">
           <% if @material.bookings.count > 0 %>
@@ -14,12 +17,16 @@
 
 
         <div class="card-trip" style="margin-top: 10px">
+
+
+
           <%# <%= cl_image_tag @material.photo.key, height: 300, width: 400, crop: :fill %>
           <% if @material.photo.attached? %>
             <%= cl_image_tag @material.photo.key, height: 300, width: 400, crop: :fill %> 
           <% else %>
             <p>no photo</p>
           <% end %>
+
           <div class="card-trip-infos" >
             <div>
               <h2><%= @material.category.capitalize %></h2>
@@ -38,6 +45,20 @@
                       method: :delete,
                       data: { confirm: "Are you sure?" } %>
 
+    </div>
+    <div class="right-container">
+      <% @reviews.each do |review| %>
+        <%= review.rate %> <%= review.content %>
+      <% end %>
+    </div>
+
+
+
 </div>
+
+
+
+
+
 
 
