@@ -37,7 +37,7 @@
               <% @materials.where.not(user: current_user).each do |material| %>
                 <div class="card-product"style="height: auto;">
                   <% if material.photo.attached? %>
-                    <%= cl_image_tag material.photo.key, height: 300, width: 400, crop: :fill %> 
+                    <%= cl_image_tag material.photo.key, height: 300, width: 400, crop: :fill %>
                   <% else %>
                     <%= image_tag 'https://image.shutterstock.com/z/stock-vector-no-photography-no-camera-and-mobile-phone-sign-prohibition-symbol-sticker-for-area-places-1138222241.jpg' %>
                   <% end %>
@@ -54,10 +54,5 @@
             <%= link_to 'Need more stuff ?', root_path(), class: "btn btn-success margin"%>
         </div>
     </div>
-
-
   </div>
-
-
-
 </div>
