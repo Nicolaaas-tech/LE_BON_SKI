@@ -17,7 +17,11 @@ require 'faker'
   description = ["Very good material", "It's decent", "Material is in great conditions"]
 
   10.times do
-    User.create!(email: Faker::Internet.email, password: "123456")
+  User.create!(email: Faker::Internet.email, password: "123456")
+  end
+
+  
+  10.times do
     Material.create!(category: category.sample, size: size.sample, description: description.sample, localisation: Faker::Address.city, price: rand(0...50), user_id: User.first.id)
     Booking.create!(start_date: "2020-12-12", end_date: "2020-12-16", user_id: User.last.id, material_id: Material.last.id)
     Review.create!(content: review.sample, rate: rand(0..5), booking_id: Booking.last.id)
