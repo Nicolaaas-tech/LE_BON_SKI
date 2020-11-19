@@ -11,7 +11,6 @@ class MaterialsController < ApplicationController
     Review.all.each do |review|
       @reviews << review if review.booking.material == @material
     end
-
   end
 
   def new

@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_booking, only: [:new, :create]
+  before_action only: [:new, :create]
 
   def new
     @booking = Booking.find(params[:booking_id])
@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @review.booking = @booking
     @review.save
+    @material = @booking.material
     redirect_to material_path(@material)
   end
 
