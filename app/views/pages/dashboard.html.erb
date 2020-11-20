@@ -10,6 +10,7 @@
           <h1> No upcoming bookings </h1>
           <%= link_to "Find your booking", root_path, class: "btn-success", style: "padding: 10px"%>
         <% else %>
+        <h1> Upcoming bookings </h1>
           <% current_user.bookings.upcoming.each do |booking| %>
             <div class="card-product"style="height: ">
               <div class="card-product-infos">
