@@ -1,47 +1,47 @@
 <%#= @bookings %>
-<div class="big-container d-flex">
-
-<div class="container my-container">
-  <div class="row">
-    <div class="col-sm center">
-      <div id="owner">
-        <h1> Upcoming bookings </h1>
-          <% current_user.bookings.upcoming.each do |booking| %>
-            <div class="card-product"style="height: ">
-              <div class="card-product-infos">
-                <h3><%= booking.material.category.capitalize %></h3>
-                <h4> <%= booking.material.description.capitalize %></h4>
-                <h4> Station :<%= booking.material.localisation.capitalize %> </h4>
-                <%= link_to "Cancel", booking_path(booking), method: :delete %>
-                <%= link_to "Details", material_path(booking.material) %>
-                <h2 style= "text-align-last: end"><%=booking.material.price %>$/day</h2>
+<div class="banner background-dashboard">
+  <div class="big-container d-flex">
+  <div class="container my-container">
+    <div class="row">
+      <div class="col-sm center">
+        <div id="owner">
+          <h1> Upcoming bookings </h1>
+            <% current_user.bookings.upcoming.each do |booking| %>
+              <div class="card-product"style="height: ">
+                <div class="card-product-infos">
+                  <h3><%= booking.material.category.capitalize %></h3>
+                  <h4> <%= booking.material.description.capitalize %></h4>
+                  <h4> Station :<%= booking.material.localisation.capitalize %> </h4>
+                  <%= link_to "Cancel", booking_path(booking), method: :delete %>
+                  <%= link_to "Details", material_path(booking.material) %>
+                  <h2 style= "text-align-last: end"><%=booking.material.price %>$/day</h2>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container my-container">
-  <div class="row">
-    <div class="col-sm center">
-      <div id="owner">
-        <h1> Past bookings </h1>
-          <% current_user.bookings.past.each do |booking| %>
-            <div class="card-product"style="height: ">
-              <div class="card-product-infos">
-                <h3><%= booking.material.category.capitalize %></h3>
-                <h4> <%= booking.material.description.capitalize %></h4>
-                <h4> Station :<%= booking.material.localisation.capitalize %> </h4>
-                <%= link_to "Review", new_booking_review_path(booking) %>
-                <h2 style= "text-align-last: end"><%=booking.material.price %>$/day</h2>
+  <div class="container my-container">
+    <div class="row">
+      <div class="col-sm center">
+        <div id="owner">
+          <h1> Past bookings </h1>
+            <% current_user.bookings.past.each do |booking| %>
+              <div class="card-product"style="height: ">
+                <div class="card-product-infos">
+                  <h3><%= booking.material.category.capitalize %></h3>
+                  <h4> <%= booking.material.description.capitalize %></h4>
+                  <h4> Station :<%= booking.material.localisation.capitalize %> </h4>
+                  <%= link_to "Review", new_booking_review_path(booking) %>
+                  <h2 style= "text-align-last: end"><%=booking.material.price %>$/day</h2>
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
+  </div>
 </div>
