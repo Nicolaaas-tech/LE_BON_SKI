@@ -8,16 +8,28 @@
             <%= image_tag ('LeBonSki_logo.png') %>
           <% end %>
 
+
           <div class="card-trip-infos" >
             <div>
               <h2><%= @material.category.capitalize %></h2>
-              <p><%= @material.description %></p>
+              <h3><%= @material.description %></h3>
               <p><%=  @material.size %></p>
               <p>Address: <%=  @material.localisation %></p>
               <p>Contact: <%=  @material.user.email %></p>
             </div>
             <h2 class="card-trip-pricing"><span class= "btn btn-success btnbook"> Book it </span> </h2>
           </div>
+
+          <% @reviews.each do |review| %>
+            <div class="card-review">
+              <div class="card-review-infos">
+                <div class="d-flex align-items-center">
+                  <h2><%= review.rate  %>/5</h2>
+                  <p><%= review.content %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
     </div>
     <div class="col-sm center">
@@ -49,10 +61,6 @@
   <%= link_to 'Back to available materials', materials_path(), class: "btn btn-primary", style: "margin-top: 25px;" %>
 
 
-    </div>
-        <div class="right-container">
-          <% @reviews.each do |review| %>
-            <%= review.rate %> <%= review.content %>
-          <% end %>
-        </div>
+
+
 </div>
