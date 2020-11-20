@@ -20,11 +20,12 @@
           </div>
         </div>   
     </div>
-
     <div class="col-sm center">
       <ul class="list-group"style="width:100%">
-          <% if @material.bookings.count > 0 %>
-            <h2>This item is already booked for:</h2>
+          <% if @material.bookings.count == 0 %>
+            <h2>Be the first to book!</h2>
+          <% else %>
+          <h2>This item is already booked for:</h2>
             <% @material.bookings.each do |booking| %>
               <li class="list-group-item" style = "display: flex; justify-content: space-between;">From: <%= booking.start_date %> To: <%= booking.end_date %>
               <h5><%= ((booking.end_date.to_date - booking.start_date.to_date).to_i)* @material.price %> euros</h5>
@@ -42,10 +43,11 @@
             <%= f.submit "Submit your booking", class: "btn btn-primary" %>
           <% end %>
         </div>
-      <%= link_to 'Back to available materials', materials_path(), class: "btn btn-primary", style: "margin-top: 25px;" %>
       </ul>
     </div>
   </div>
+  <%= link_to 'Back to available materials', materials_path(), class: "btn btn-primary", style: "margin-top: 25px;" %>
+
 
     </div>
         <div class="right-container">
