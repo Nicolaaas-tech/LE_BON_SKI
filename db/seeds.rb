@@ -21,6 +21,7 @@ require 'faker'
   #   Booking.create!(start_date: "2020-12-12", end_date: "2020-12-16", user_id: User.last.id, material_id: Material.last.id)
   #   Review.create!(content: review.sample, rate: rand(0..5), booking_id: Booking.last.id)
   # end
+  
   puts "Created 10 users/materials/bookings/Reviews"
 
   frantz = User.create!({email: "frantz@gmail.com", password:'123456'})
