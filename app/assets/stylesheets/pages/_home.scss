@@ -1,9 +1,11 @@
 // Specific CSS for your home-page
+
 .my-container {
 min-height: calc(100vh - 180px);
 }
 
 .card-category-banner {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('bannerpink.jpg');
   margin-top: -80px;
   color: white;
   background-size: cover;

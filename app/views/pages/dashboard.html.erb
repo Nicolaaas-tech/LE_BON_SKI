@@ -1,9 +1,11 @@
-<div class="big-container d-flex">
 
-<div class="container my-container">
-  <div class="row">
-    <div class="col-sm center">
-      <div id="owner">
+
+<div class="banner background-dashboard">
+  <div class="big-container d-flex">          
+    <div class="container my-container">
+      <div class="row">
+        <div class="col-sm center">
+          <div id="owner">
         <% if current_user.bookings.upcoming.count == 0 %>
           <h1> No upcoming bookings </h1>
           <%= link_to "Find your booking", root_path, class: "btn-success", style: "padding: 10px"%>
@@ -20,35 +22,34 @@
               </div>
             </div>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="container my-container">
-  <div class="row">
-    <div class="col-sm center">
-      <div id="owner">
-        <% if current_user.bookings.past.count == 0 %>
-          <h1> You don't have any past bookings </h1>
-        <% else %>
-          <h1> Past bookings </h1>
-          <% current_user.bookings.past.each do |booking| %>
-            <div class="card-product"style="height: ">
-              <div class="card-product-infos">
-                <h3><%= booking.material.category.capitalize %></h3>
-                <h4> <%= booking.material.description.capitalize %></h4>
-                <h4> Station :<%= booking.material.localisation.capitalize %> </h4>
-                <%= link_to "Review", new_booking_review_path(booking) %>
-                <h2 style= "text-align-last: end"><%=booking.material.price %>$/day</h2>
+                  
+  <div class="container my-container">
+      <div class="row">
+      <div class="col-sm center">
+        <div id="owner" style="width:82%;">
+          <% if current_user.bookings.past.count == 0 %>
+            <h1> You don't have any past bookings </h1>
+          <% else %>
+            <h1> Past bookings </h1>
+            <% current_user.bookings.past.each do |booking| %>
+              <div class="card-product"style="height: ">
+                <div class="card-product-infos">
+                  <h3><%= booking.material.category.capitalize %></h3>
+                  <h4> <%= booking.material.description.capitalize %></h4>
+                  <h4> Station :<%= booking.material.localisation.capitalize %> </h4>
+                  <%= link_to "Review", new_booking_review_path(booking) %>
+                  <h2 style= "text-align-last: end"><%= ((booking.end_date.to_date - booking.start_date.to_date).to_i)* booking.material.price %>€</h2>
+                </div>
               </div>
-            </div>
-          <% end %>
-        <% end %>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 </div>
