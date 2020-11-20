@@ -7,10 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-  Review.destroy_all
-  Booking.destroy_all
-  Material.destroy_all
-  User.destroy_all
   category = ["Ski", "Snowboard", "Luge", "Racket", "Mono-ski"]
   size = ["Small", "Medium", "Large"]
   review = ["Great", "Bad", "Very bad", "The best!"]
