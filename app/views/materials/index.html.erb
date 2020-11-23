@@ -28,8 +28,8 @@
                 <% end %>
               <% end %>
               <h1><%= link_to 'Need more stuff ?', root_path(), class: "btn btn-success margin"%></h1>
+          </div>
       </div>
-    </div>
 
 
       <div class="col-sm center">
@@ -38,28 +38,26 @@
             <% @materials.where(user: current_user).each do |material| %>
               <div class="card-product"style="height: auto;">
               <% if material.photo.attached? %>
-                <%= cl_image_tag material.photo.key, height: 300, width: 400, crop: :fill %>
+                <%= cl_image_tag material.photo.key, crop: :fill, :quality=>"auto" %>
               <% else %>
                 <%= image_tag ('LeBonSki_logo.png') %>
               <% end %>
-                <div class="card-product-infos">
-                  <h3><%= link_to material.category.capitalize, material_path(material.id) %></h3>
-                  <h4> <%= material.description.capitalize %></h4>
-                  <h4> Station :<%= material.localisation.capitalize %> </h4>
-                  <%= link_to "Details", material_path(material.id) %>
-                  <%= link_to 'Edit', edit_material_path(material.id) %>
-                  <%= link_to "Delete",
-                      material_path(material.id),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" } %>
-                  <h2 style= "text-align-last: end"><%=material.price %>€/day</h2>
-                </div>
-              </div>
-            </div>
-          <% end %>
-          <h1><%= link_to 'Rent out my stuff', new_material_path(), class: "btn btn-success margin"%></h1>
+                  <div class="card-product-infos">
+                    <h3><%= link_to material.category.capitalize, material_path(material.id) %></h3>
+                    <h4> <%= material.description.capitalize %></h4>
+                    <h4> Station :<%= material.localisation.capitalize %> </h4>
+                    <%= link_to "Details", material_path(material.id) %>
+                    <%= link_to 'Edit', edit_material_path(material.id) %>
+                    <%= link_to "Delete",
+                        material_path(material.id),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %>
+                    <h2 style= "text-align-last: end"><%=material.price %>€/day</h2>
+                  </div>
+            <% end %>
 
       </div>
+      <h1><%= link_to 'Rent out my stuff', new_material_path(), class: "btn btn-success margin"%></h1>
     </div>
   </div>
 </div>
