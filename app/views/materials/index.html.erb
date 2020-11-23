@@ -18,6 +18,8 @@
                     <div class="card-product-infos">
                       <h3><%= link_to material.category.capitalize, material_path(material.id) %></h3>
                       <h4> <%= material.description.capitalize %></h4>
+                      <p> Station :<%= material.localisation.capitalize %> </p>
+
                       <h4> Station :<%= material.localisation.capitalize %> </h4>
                       <%= link_to "Details", material_path(material.id) %>
                       <h2 style= "text-align-last: end"><%=material.price %>€/day</h2>
@@ -25,9 +27,9 @@
                   </div>
                 <% end %>
               <% end %>
-              <%= link_to 'Need more stuff ?', root_path(), class: "btn btn-success margin"%>
-          </div>
+              <h1><%= link_to 'Need more stuff ?', root_path(), class: "btn btn-success margin"%></h1>
       </div>
+    </div>
 
 
       <div class="col-sm center">
@@ -53,9 +55,10 @@
                   <h2 style= "text-align-last: end"><%=material.price %>€/day</h2>
                 </div>
               </div>
-            <% end %>
-            <%= link_to 'Rent out my stuff', new_material_path(), class: "btn btn-success margin"%>
-        </div>
+            </div>
+          <% end %>
+          <h1><%= link_to 'Rent out my stuff', new_material_path(), class: "btn btn-success margin"%></h1>
+
       </div>
     </div>
   </div>
