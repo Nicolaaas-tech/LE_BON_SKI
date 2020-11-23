@@ -1,30 +1,30 @@
 <div class="container my-container">
  <div class="row">
     <div class="col-sm center">
-       <div id="user">
-          <h1> All Items available</h1>
-            <%if @materials.count == 0 %>
-              <h4>No material matching your search</h4>
-            <% else %>
-              <% @materials.where.not(user: current_user).each do |material| %>
-                <div class="card-product"style="height: auto;">
-                  <% if material.photo.attached? %>
-                    <%= cl_image_tag material.photo.key, height: 300, width: 400, crop: :fill %>
-                  <% else %>
-                    <%= image_tag ('LeBonSki_logo.png') %>
-                  <% end %>
-                  <div class="card-product-infos">
-                    <h3><%= link_to material.category.capitalize, material_path(material.id) %></h3>
-                    <h4> <%= material.description.capitalize %></h4>
-                    <p> Station :<%= material.localisation.capitalize %> </p>
-                    <%= link_to "Details", material_path(material.id) %>
-                    <h2 style= "text-align-last: end"><%=material.price %>€/day</h2>
+      <div id="user">
+            <h1> All Items available</h1>
+              <%if @materials.count == 0 %>
+                <h4>No material matching your search</h4>
+              <% else %>
+                <% @materials.where.not(user: current_user).each do |material| %>
+                  <div class="card-product"style="height: auto;">
+                    <% if material.photo.attached? %>
+                      <%= cl_image_tag material.photo.key, height: 300, width: 400, crop: :fill %>
+                    <% else %>
+                      <%= image_tag ('LeBonSki_logo.png') %>
+                    <% end %>
+                    <div class="card-product-infos">
+                      <h3><%= link_to material.category.capitalize, material_path(material.id) %></h3>
+                      <h4> <%= material.description.capitalize %></h4>
+                      <p> Station :<%= material.localisation.capitalize %> </p>
+                      <%= link_to "Details", material_path(material.id) %>
+                      <h2 style= "text-align-last: end"><%=material.price %>€/day</h2>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               <% end %>
-            <% end %>
-            <%= link_to 'Need more stuff ?', root_path(), class: "btn btn-success margin"%>
-        </div>
+              <h1><%= link_to 'Need more stuff ?', root_path(), class: "btn btn-success margin"%></h1>
+      </div>
     </div>
 
     <div class="col-sm center">
@@ -51,7 +51,7 @@
               </div>
             </div>
           <% end %>
-          <%= link_to 'Rent out my stuff', new_material_path(), class: "btn btn-success margin"%>
+          <h1><%= link_to 'Rent out my stuff', new_material_path(), class: "btn btn-success margin"%></h1>
       </div>
     </div>
   </div>

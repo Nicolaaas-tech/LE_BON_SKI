@@ -6,7 +6,7 @@
       <div id="owner">
         <% if current_user.bookings.upcoming.count == 0 %>
           <h1> No upcoming bookings </h1>
-          <%= link_to "Find your booking", root_path, class: "btn-success", style: "padding: 10px"%>
+          <%= link_to "Find your booking", root_path, class: "button-search btn btn-success marginn", style: "padding: 10px"%>
         <% else %>
           <% current_user.bookings.upcoming.each do |booking| %>
             <div class="card-product"style="height: ">
