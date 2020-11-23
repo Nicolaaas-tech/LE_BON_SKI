@@ -1,11 +1,20 @@
 .footer {
-  background: #F4F4F4;
+  background-color: rgb(244,244,244);
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1001;
+}
+
+.footer-opacity {
+  background-color: rgba(244,244,244,0);
+  .footer-links a {opacity: 0.4;}
 }
 
 .footer-links {
